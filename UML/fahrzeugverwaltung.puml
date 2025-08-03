@@ -1,0 +1,10 @@
+@startuml Fahrzeugverwaltung
+abstract class Fahrzeug {
+  - marke: String
+  - modell: String
+  - baujahr: int
+  - anzahlReifen: int
+  + starten(): void
+  + zeigeInfo(): void
+  + wechsleReifen(): void
+}
