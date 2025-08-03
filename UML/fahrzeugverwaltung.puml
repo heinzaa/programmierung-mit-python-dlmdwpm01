@@ -5,6 +5,31 @@ abstract class Fahrzeug {
   - baujahr: int
   - anzahlReifen: int
   + starten(): void
-  + zeigeInfo(): void
+  + zeigeFahrzeugInformationen(): void
   + wechsleReifen(): void
+}
+class PKW extends Fahrzeug {
+  - anzahlTueren: int
+  + PKW(marke: String, modell: String, baujahr: int, anzahlTueren: int)
+  + starten(): void
+  + zeigeFahrzeugInformationen(): void
+  + wechsleReifen(): void
+}
+
+class Motorrad extends Fahrzeug {
+  - helmfachVorhanden: boolean
+  + Motorrad(marke: String, modell: String, baujahr: int, helmfachVorhanden: boolean)
+  + starten(): void
+  + zeigeFahrzeugInformationen(): void
+  + wechsleReifen(): void
+  + klappeHelmfach(): void
+}
+
+class LKW extends Fahrzeug {
+  - ladekapazitaet: float
+  + Motorrad(marke: String, modell: String, baujahr: int, ladekapazitaet: float)
+  + starten(): void
+  + zeigeFahrzeugInformationen(): void
+  + wechsleReifen(): void
+  + ladeLadung(gewicht: float): void
 }
