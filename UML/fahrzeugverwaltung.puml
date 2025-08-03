@@ -4,13 +4,14 @@ abstract class Fahrzeug {
   - modell: String
   - baujahr: int
   - anzahlReifen: int
+  - preis: float
   + starten(): void
   + zeigeFahrzeugInformationen(): void
   + wechsleReifen(): void
 }
 class PKW extends Fahrzeug {
   - anzahlTueren: int
-  + PKW(marke: String, modell: String, baujahr: int, anzahlTueren: int)
+  + PKW(marke: String, modell: String, baujahr: int, preis: float, anzahlTueren: int, )
   + starten(): void
   + zeigeFahrzeugInformationen(): void
   + wechsleReifen(): void
@@ -19,7 +20,7 @@ class PKW extends Fahrzeug {
 class Motorrad extends Fahrzeug {
   - helmfachVorhanden: boolean
   - helmfachGeöffnet: boolean
-  + Motorrad(marke: String, modell: String, baujahr: int, helmfachVorhanden: boolean)
+  + Motorrad(marke: String, modell: String, baujahr: int, preis: float, helmfachVorhanden: boolean, helmfachGeöffnet: boolean)
   + starten(): void
   + zeigeFahrzeugInformationen(): void
   + wechsleReifen(): void
@@ -29,7 +30,7 @@ class Motorrad extends Fahrzeug {
 
 class LKW extends Fahrzeug {
   - ladekapazitaet: float
-  + Motorrad(marke: String, modell: String, baujahr: int, ladekapazitaet: float)
+  + Motorrad(marke: String, modell: String, baujahr: int, preis: float, ladekapazitaet: float)
   + starten(): void
   + zeigeFahrzeugInformationen(): void
   + wechsleReifen(): void
@@ -43,3 +44,5 @@ class Fahrzeughausverwaltung {
   + zeigeFahrzeugInfo(f: Fahrzeug): void
   + fuehreReifenwechselDurch(f: Fahrzeug): void
 }
+Fahrzeughausverwaltung --> Fahrzeug : nutzt
+@enduml 
