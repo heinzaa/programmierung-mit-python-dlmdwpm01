@@ -18,11 +18,13 @@ class PKW extends Fahrzeug {
 
 class Motorrad extends Fahrzeug {
   - helmfachVorhanden: boolean
+  - helmfachGeöffnet: boolean
   + Motorrad(marke: String, modell: String, baujahr: int, helmfachVorhanden: boolean)
   + starten(): void
   + zeigeFahrzeugInformationen(): void
   + wechsleReifen(): void
-  + klappeHelmfach(): void
+  + öffneHelmfach(): void
+  + schließeHelmfach(): void
 }
 
 class LKW extends Fahrzeug {
@@ -32,4 +34,12 @@ class LKW extends Fahrzeug {
   + zeigeFahrzeugInformationen(): void
   + wechsleReifen(): void
   + ladeLadung(gewicht: float): void
+}
+
+class Fahrzeughausverwaltung {
+  - fahrzeuge: List<Fahrzeug>
+  + Fahrzeughausverwaltung()
+  + hinzufuegen(f: Fahrzeug): void
+  + zeigeFahrzeugInfo(f: Fahrzeug): void
+  + fuehreReifenwechselDurch(f: Fahrzeug): void
 }
