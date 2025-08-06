@@ -43,3 +43,11 @@ class FahrzeughausVerwaltung:
     # Gesamtwert aller Fahrzeuge berechnen
     def berechne_gesamtwert(self) -> float:
         return sum(fahrzeug.preis for fahrzeug in self._fahrzeuge)
+    
+    # Fahrzeuge nach Marke suchen
+    def suche_fahrzeuge_nach_marke(self, marke: str) -> List[Fahrzeug]:
+        ergebnis = []
+        for fahrzeug in self._fahrzeuge:
+            if fahrzeug.marke.lower() == marke.lower():
+                ergebnis.append(fahrzeug)
+        return ergebnis
