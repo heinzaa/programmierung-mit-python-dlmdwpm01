@@ -32,3 +32,14 @@ class FahrzeughausVerwaltung:
         print("\n--- Fahrzeugbestand ---")
         for fahrzeug in self._fahrzeuge:
             fahrzeug.zeige_fahrzeug_informationen()
+    
+    # Details eines Fahrzeugs anzeigen
+    def zeige_fahrzeugdetails(self, fahrzeug: Fahrzeug):
+        if fahrzeug in self._fahrzeuge:
+            fahrzeug.zeige_fahrzeug_informationen()
+        else:
+            print("Fahrzeug nicht im Bestand.")        
+    
+    # Gesamtwert aller Fahrzeuge berechnen
+    def berechne_gesamtwert(self) -> float:
+        return sum(fahrzeug.preis for fahrzeug in self._fahrzeuge)
