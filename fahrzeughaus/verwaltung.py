@@ -40,6 +40,13 @@ class FahrzeughausVerwaltung:
         else:
             print("Fahrzeug nicht im Bestand.")        
     
+    # Reifenwechsel durchführen
+    def fuehre_reifenwechsel_durch(self, fahrzeug: Fahrzeug):
+        if fahrzeug in self._fahrzeuge:
+            fahrzeug.wechsle_reifen()
+        else:
+            print("Fahrzeug nicht im Bestand.")
+    
     # Gesamtwert aller Fahrzeuge berechnen
     def berechne_gesamtwert(self) -> float:
         return sum(fahrzeug.preis for fahrzeug in self._fahrzeuge)
