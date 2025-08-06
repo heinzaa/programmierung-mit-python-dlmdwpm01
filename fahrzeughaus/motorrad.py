@@ -6,15 +6,15 @@ class Motorrad(Fahrzeug):
         self.sitzbank_geoeffnet = False
 
     def starten(self):
-        print(f"{self.marke} {self.modell} startet mit einem Knopfdruck.")
+        print(f"{self.marke} {self.modell} Motor durch einen Knopfdruck gestartet.")
 
     def wechsle_reifen(self):
         print(f"Beim Motorrad werden {self.anzahl_reifen} Reifen von Hand gewechselt.")
 
     def sitzbank_oeffnen(self):
         self.sitzbank_geoeffnet = True
-        print("Die Sitzbank ist jetzt geöffnet.")
+        print(f"Die Sitzbank ist jetzt geöffnet für {self.marke} {self.modell}.")
 
     def sitzbank_schliessen(self):
         self.sitzbank_geoeffnet = False
-        print("Die Sitzbank ist jetzt geschlossen.")
+        print(f"Die Sitzbank ist jetzt geschlossen für {self.marke} {self.modell}.")

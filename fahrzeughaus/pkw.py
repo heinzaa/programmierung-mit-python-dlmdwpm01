@@ -7,15 +7,15 @@ class PKW(Fahrzeug):
         self.kofferraum_offen = False
 
     def starten(self):
-        print(f"{self.marke} {self.modell} startet den Motor.")
+        print(f"{self.marke} {self.modell} startet den Motor durch einen Schlüssel.")
 
     def wechsle_reifen(self):
-        print(f"Beim PKW werden alle {self.anzahl_reifen} Reifen in der Werkstatt gewechselt.")
+        print(f"Beim {self.marke} {self.modell} werden alle {self.anzahl_reifen} Reifen in der Werkstatt gewechselt.")
 
     def kofferraum_oeffnen(self):
         self.kofferraum_offen = True
-        print("Der Kofferraum ist jetzt geöffnet.")
+        print(f"Der Kofferraum ist jetzt geöffnet für {self.marke} {self.modell}.")
 
     def kofferraum_schliessen(self):
         self.kofferraum_offen = False
-        print("Der Kofferraum ist jetzt geschlossen.")
+        print(f"Der Kofferraum ist jetzt geschlossen für {self.marke} {self.modell}.")
