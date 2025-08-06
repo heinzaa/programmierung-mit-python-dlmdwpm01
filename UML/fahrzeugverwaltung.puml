@@ -1,48 +1,102 @@
 @startuml Fahrzeugverwaltung
+
 abstract class Fahrzeug {
-  - marke: String
-  - modell: String
-  - baujahr: int
-  - anzahlReifen: int
-  - preis: float
+  - _marke: str
+  - _modell: str
+  - _baujahr: int
+  - _anzahl_reifen: int
+  - _preis: float
+
+  + Fahrzeug(marke: str, modell: str, baujahr: int, anzahl_reifen: int, preis: float)
+
+  ' Property-Zugriffe
+  + marke: str {readOnly}
+  + modell: str {readOnly}
+  + baujahr: int {readOnly}
+  + anzahl_reifen: int {readOnly}
+  + preis: float {get/set}
+
+  ' Methoden
+  + preis(wert: float): void
+  + setze_rabatt(prozent: float): void
+  + zeige_fahrzeug_informationen(): void
+  + wechsle_reifen(): void
   + starten(): void
-  + zeigeFahrzeugInformationen(): void
-  + wechsleReifen(): void
-}
-class PKW extends Fahrzeug {
-  - anzahlTueren: int
-  + PKW(marke: String, modell: String, baujahr: int, preis: float, anzahlTueren: int, )
-  + starten(): void
-  + zeigeFahrzeugInformationen(): void
-  + wechsleReifen(): void
 }
 
-class Motorrad extends Fahrzeug {
-  - helmfachVorhanden: boolean
-  - helmfachGeöffnet: boolean
-  + Motorrad(marke: String, modell: String, baujahr: int, preis: float, helmfachVorhanden: boolean, helmfachGeöffnet: boolean)
-  + starten(): void
-  + zeigeFahrzeugInformationen(): void
-  + wechsleReifen(): void
-  + öffneHelmfach(): void
-  + schließeHelmfach(): void
+class PKW {
+  - _kofferraumvolumen: int
+  - _kofferraum_offen: bool
+
+  + PKW(marke: str, modell: str, baujahr: int, anzahl_reifen: int, preis: float, kofferraumvolumen: int)
+
+  ' Properties
+  + kofferraumvolumen: int {readOnly}
+  + kofferraum_offen: bool {readOnly}
+
+  ' Steuernde Methoden
+  + kofferraum_oeffnen(): void
+  + kofferraum_schliessen(): void
+
+  ' Überschriebene Methoden
+  + starten(): void {override}
+  + wechsle_reifen(): void {override}
 }
 
-class LKW extends Fahrzeug {
-  - ladekapazitaet: float
-  + Motorrad(marke: String, modell: String, baujahr: int, preis: float, ladekapazitaet: float)
-  + starten(): void
-  + zeigeFahrzeugInformationen(): void
-  + wechsleReifen(): void
-  + ladeLadung(gewicht: float): void
+
+class Motorrad {
+  - _sitzbank_geoeffnet: bool
+
+  + Motorrad(marke: str, modell: str, baujahr: int, preis: float)
+
+  ' Property
+  + sitzbank_geoeffnet: bool {readOnly}
+
+  + sitzbank_oeffnen(): void
+  + sitzbank_schliessen(): void
+
+  + starten(): void {override}
+  + wechsle_reifen(): void {override}
 }
 
-class Fahrzeughausverwaltung {
-  - fahrzeuge: List<Fahrzeug>
-  + Fahrzeughausverwaltung()
-  + hinzufuegen(f: Fahrzeug): void
-  + zeigeFahrzeugInfo(f: Fahrzeug): void
-  + fuehreReifenwechselDurch(f: Fahrzeug): void
+class LKW {
+  - _ladegewicht: int
+  + LKW(marke: str, modell: str, baujahr: int, anzahl_reifen: int, preis: float, ladegewicht: int)
+
+  ' Property
+  + ladegewicht: int {readOnly}
+
+  ' Eigene Methode
+  + ladung_aufnehmen(gewicht: int): void
+
+  ' Überschriebene Methoden
+  + starten(): void {override}
+  + wechsle_reifen(): void {override}
 }
-Fahrzeughausverwaltung --> Fahrzeug : nutzt
-@enduml 
+
+class FahrzeughausVerwaltung {
+  - _fahrzeuge: List<Fahrzeug>
+
+  + FahrzeughausVerwaltung()
+
+  ' Zugriff
+  + fahrzeuge: List<Fahrzeug> {readOnly}
+
+  ' Verwaltung
+  + fahrzeug_hinzufuegen(fahrzeug: Fahrzeug): void
+  + fahrzeug_entfernen(fahrzeug: Fahrzeug): void
+
+  ' Anzeige & Logik
+  + zeige_alle_fahrzeuge(): void
+  + zeige_fahrzeugdetails(fahrzeug: Fahrzeug): void
+  + fuehre_reifenwechsel_durch(fahrzeug: Fahrzeug): void
+  + berechne_gesamtwert(): float
+  + suche_fahrzeuge_nach_marke(marke: str): List<Fahrzeug>
+}
+
+Fahrzeug <|-- PKW
+Fahrzeug <|-- Motorrad
+Fahrzeug <|-- LKW
+FahrzeughausVerwaltung "1" *-- "0..*" Fahrzeug
+
+@enduml
