@@ -2,32 +2,32 @@ from abc import ABC, abstractmethod
 
 class Fahrzeug(ABC):
     def __init__(self, marke: str, modell: str, baujahr: int, anzahl_reifen: int, preis: float):
-        self._marke = marke
-        self._modell = modell
-        self._baujahr = baujahr
-        self._anzahl_reifen = anzahl_reifen
-        self._preis = preis
+        self.__marke = marke
+        self.__modell = modell
+        self.__baujahr = baujahr
+        self.__anzahl_reifen = anzahl_reifen
+        self.__preis = preis
 
     # Getter
     @property
     def marke(self):
-        return self._marke
+        return self.__marke
 
     @property
     def modell(self):
-        return self._modell
+        return self.__modell
 
     @property
     def baujahr(self):
-        return self._baujahr
+        return self.__baujahr
 
     @property
     def anzahl_reifen(self):
-        return self._anzahl_reifen
+        return self.__anzahl_reifen
 
     @property
     def preis(self):
-        return self._preis
+        return self.__preis
 
     # Setter mit Validierung
     @preis.setter
@@ -40,7 +40,7 @@ class Fahrzeug(ABC):
     def setze_rabatt(self, prozent: float):
         if not 0 <= prozent <= 100:
             raise ValueError("Rabatt muss zwischen 0 und 100 liegen.")
-        self._preis *= (1 - prozent / 100)
+        self.__preis *= (1 - prozent / 100)
 
     # Verhalten
     @abstractmethod
@@ -48,7 +48,7 @@ class Fahrzeug(ABC):
         pass
 
     def zeige_fahrzeug_informationen(self):
-        print(f"{self._marke} {self._modell}, Baujahr {self._baujahr}, {self._anzahl_reifen} Reifen, Preis: {self._preis}€")
+        print(f"{self.__marke} {self.__modell}, Baujahr {self.__baujahr}, {self.__anzahl_reifen} Reifen, Preis: {self.__preis}€")
 
     def wechsle_reifen(self):
-        print(f"Es werden {self._anzahl_reifen} Reifen gewechselt.")
+        print(f"Es werden {self.__anzahl_reifen} Reifen gewechselt.")
