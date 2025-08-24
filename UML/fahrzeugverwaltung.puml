@@ -46,11 +46,13 @@ class PKW {
 
 class Motorrad {
   - _sitzbank_geoeffnet: bool
+  - _staender_eingeklappt: bool
 
-  + Motorrad(marke: str, modell: str, baujahr: int, preis: float)
+  + Motorrad(marke: str, modell: str, baujahr: int, anzahl_reifen: int, preis: float)
 
   ' Property
   + sitzbank_geoeffnet: bool {readOnly}
+  + staender_eingeklappt: bool {get/set}
 
   + sitzbank_oeffnen(): void
   + sitzbank_schliessen(): void
@@ -61,6 +63,7 @@ class Motorrad {
 
 class LKW {
   - _ladegewicht: int
+  - __max_ladegewicht: int
   + LKW(marke: str, modell: str, baujahr: int, anzahl_reifen: int, preis: float, ladegewicht: int)
 
   ' Property

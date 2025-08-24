@@ -1,0 +1,17 @@
+@startuml Fahrzeugverwaltung
+
+class LKW {
+  - _ladegewicht: int
+  - __max_ladegewicht: float
+  + LKW(marke: str, modell: str, baujahr: int, anzahl_reifen: int, preis: float, max_ladegwicht: float, ladegewicht: int)
+
+  ' Property
+  + ladegewicht: int {readOnly}
+
+  ' Eigene Methode
+  + ladung_aufnehmen(gewicht: int): void
+
+  ' Überschriebene Methoden
+  + starten(): void {override}
+  + wechsle_reifen(): void {override}
+}
